@@ -47,6 +47,7 @@ financial losses, emphasizing the importance of caution and diversified investme
 st.markdown(paragraph, unsafe_allow_html=True)
 
 st.sidebar.info("Created and designed by Team TanX")
+st.sidebar.info("Created and designed by [Team tanX](www.linkedin.com/in/chandrashekhar-reddy-821aca , www.linkedin.com/in/raj-mange-88b839266, www.linkedin.com/in/sharath-pujari-17883a319 ,www.linkedin.com/in/sangamesh-hunashikatti-156aa0253)")
 
 def download_data(stock_symbol, start_date, end_date):
     try:
