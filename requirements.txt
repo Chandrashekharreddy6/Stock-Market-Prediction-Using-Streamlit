@@ -1,6 +1,11 @@
 streamlit
-scikit-learn
-yfinance
 pandas
+yfinance
 ta
+scikit-learn
 xgboost
+streamlit-lottie
+vaderSentiment
+email-validator
+openpyxl
+
