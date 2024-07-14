@@ -31,7 +31,7 @@ def load_animation_file(file_path):
     except FileNotFoundError:
         st.error(f"Animation file not found: {file_path}")
         return None
-
+st.set_page_config(page_title="team-tanx")
 st.title('Stock Market Predictions Using Streamlit')
 
 paragraph = '''
