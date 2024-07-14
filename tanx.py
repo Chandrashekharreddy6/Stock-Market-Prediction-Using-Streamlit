@@ -52,7 +52,7 @@ st.markdown(paragraph, unsafe_allow_html=True)
 st.sidebar.info("Created and designed by Team TanX")
 st.sidebar.info("Created and designed by [Team tanX](www.linkedin.com/in/chandrashekhar-reddy-821aca , www.linkedin.com/in/raj-mange-88b839266, www.linkedin.com/in/sharath-pujari-17883a319 ,www.linkedin.com/in/sangamesh-hunashikatti-156aa0253)")
 # Load animation JSON files
-stock_chart_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\a.json")
+stock_chart_animation = load_animation_file("blob:https://app.lottiefiles.com/933b64a4-c9a5-4094-a43d-4086bce5b05d")
 financial_analysis_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\c.json")
 stock_growth_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\e.json")
 financial_data_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\b.json")
