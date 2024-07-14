@@ -12,8 +12,6 @@ from sklearn.svm import SVR
 from sklearn.neighbors import KNeighborsRegressor
 from xgboost import XGBRegressor
 from sklearn.metrics import r2_score, mean_absolute_error
-from streamlit_lottie import st_lottie
-import json
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -25,7 +23,7 @@ from datetime import datetime as dt
 import os
 import numpy as np
 
-@st.cache_resource
+@st.cache
 def load_animation_file(file_path):
     try:
         with open(file_path, "r") as f:
@@ -50,17 +48,7 @@ financial losses, emphasizing the importance of caution and diversified investme
 st.markdown(paragraph, unsafe_allow_html=True)
 
 st.sidebar.info("Created and designed by Team TanX")
-st.sidebar.info("Created and designed by [Team tanX](www.linkedin.com/in/chandrashekhar-reddy-821aca , www.linkedin.com/in/raj-mange-88b839266, www.linkedin.com/in/sharath-pujari-17883a319 ,www.linkedin.com/in/sangamesh-hunashikatti-156aa0253)")
-# Load animation JSON files
-stock_chart_animation = load_animation_file("blob:https://app.lottiefiles.com/933b64a4-c9a5-4094-a43d-4086bce5b05d")
-financial_analysis_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\c.json")
-stock_growth_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\e.json")
-financial_data_animation = load_animation_file("C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\b.json")
 
-def display_animation(animation):
-    st_lottie(animation, width=500, height=500)
-
-@st.cache_data()
 def download_data(stock_symbol, start_date, end_date):
     try:
         stock_info = yf.Ticker(stock_symbol)
@@ -74,7 +62,6 @@ def download_data(stock_symbol, start_date, end_date):
 
 def tech_indicators(data):
     st.header('Technical Indicators')
-    display_animation(stock_chart_animation)
     option = st.radio('Choose a Technical Indicator to Visualize', ['Close', 'BB', 'MACD', 'RSI', 'SMA', 'EMA'])
 
     bb_indicator = BollingerBands(data['Close'])
@@ -111,34 +98,12 @@ def tech_indicators(data):
 
 def dataframe(data):
     st.header('Recent Data')
-    st.markdown(
-        '''
-        <style>
-        .hover-effect:hover {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-        </style>
-        ''', unsafe_allow_html=True
-    )
-    display_animation(financial_data_animation)
-    st.dataframe(data.tail(10).style.set_table_attributes("class='hover-effect'"))
+    st.dataframe(data.tail(10))
     
     # Store data for email
     store_data_for_email(data)
 
 def predict(data):
-    st.markdown(
-        '''
-        <style>
-        .hover-effect:hover {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-        </style>
-        ''', unsafe_allow_html=True
-    )
-    display_animation(stock_growth_animation)
     model = st.radio('Choose a model', ['LinearRegression', 'SVR', 'KNeighborsRegressor', 'XGBoostRegressor'])
     num = st.number_input('How many days forecast?', value=5)
     num = int(num)
@@ -297,7 +262,7 @@ def otp_login():
             st.sidebar.error("Invalid OTP")
 
 def log_user_login(email):
-    log_file = "C:\\Users\\Asus\\Documents\\Stock-Price-Prediction-app\\user_logins.xlsx"
+    log_file = "user_logins.xlsx"
     current_time = dt.now().strftime("%Y-%m-%d %H:%M:%S")
 
     if os.path.exists(log_file):
