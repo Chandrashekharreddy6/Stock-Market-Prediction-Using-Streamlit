@@ -1,0 +1,4 @@
+--> instal all the requirements in your bash or terminal or in the vs code terminal.
+--> after instaliing check all the connections and place all the files in their respective folders
+--> change the path of the user logins from the code ad make the changes and run the tanx.py code. 
+--> ur good to go
